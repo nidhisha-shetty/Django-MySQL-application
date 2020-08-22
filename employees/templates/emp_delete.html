@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .button {
+        border: none;
+        font-family: "georgia",sans-serif;
+        border-radius: 6px;
+        cursor: pointer;
+        background-size: 10%
+        margin: 1px;
+        padding: 1px;
+        width: 50px;
+        border-radius: 6px;
+        color: Black;
+        background-size: 200%; 
+    }
+</style>
+<h3>Delete employee details</h3>
+<div>
+	{% for x in messages %}
+			<h5> <p class="serif" style="color: green;"> {{x}} </p></h5>
+	{% endfor %}
+</div>
+{% for x in emp %}
+    <li><a class="button" href="{{ x.go_to_link_delete }}"> {{ x.emp_name}}</li>
+{% endfor %}
+<p align="center"><a href="/records/"><button type="button" class="btn btn-danger">Home</button></a></p>                                                                                      
+{% endblock %}

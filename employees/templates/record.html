@@ -1,4 +1,5 @@
-{% load static %}
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head> 
@@ -7,30 +8,55 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
-<title>Employee application</title>
 <style type="text/css">
   .text-my-own-color {
   color: #000000 !important; 
 }
 </style>
-<table class="table table-active ">
-    <thead>
-          <tr>
+<form align="right" action="/search/" method="get">
+    <input type="text" name="search" size="20">
+    <input type="submit" value="Search">
+</form>
+<a href="/emp_create/"> <input type="button" value="Add details"></a>
+<a href="/emp_edit/"> <input type="button" value="Edit details"></a>
+<a href="/emp_delete/"> <input type="button" value="Delete details"></a>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
             <th scope="col">Employee name</th>
             <th scope="col">Employee id</th>
             <th scope="col">Employee salary</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for x in emp %}
-        <tr>
-            <td>{{ x.emp_name }}</td>
-            <td>{{ x.emp_id }}</td>
-            <td>{{ x.emp_sal }}</td>
         </tr>
-        {% endfor %}
-        </tbody>
+    </thead>
+    <tbody>
+    {% for x in emp %}
+    <tr>
+        <td>{{ x.emp_name }}</td>
+        <td>{{ x.emp_id }}</td>
+        <td>{{ x.emp_salary }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
     </table>
-</body>
-
+    <hr>
+    <div class="pagination">
+        <span class="step-links">
+            {% if emp.has_previous %}
+                <a href="?page=1">&laquo; first-</a>
+                <a href="?page={{ emp.previous_page_number }}">previous-</a>
+            {% endif %}
+            <span class="current">
+                Page {{ emp.number }} of {{ emp.paginator.num_pages }}-
+            </span>
+            {% if emp.has_next %}
+                <a href="?page={{ emp.next_page_number }}">next-</a>
+                <a href="?page={{ emp.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <form align="right" action="/sort" method="get">
+        <input type="submit" value="Sort deatils">
+    </form>
+<body>
 </html>
+{% endblock content %}

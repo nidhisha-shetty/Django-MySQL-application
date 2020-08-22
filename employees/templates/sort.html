@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> </head>
+<title>Employee application</title>
+<style type="text/css">
+.text-my-own-color {
+	color: #000000 !important;
+}
+</style>
+<table class="table table-active ">
+	<thead>
+		<tr>
+			<th scope="col">Employee name</th>
+			<th scope="col">Employee id</th>
+			<th scope="col">Employee salary</th>
+		</tr>
+	</thead>
+	<tbody> {% for x in emp %}
+		<tr>
+			<td>{{ x.emp_name }}</td>
+			<td>{{ x.emp_id }}</td>
+			<td>{{ x.emp_salary }}</td>
+		</tr> {% endfor %} </tbody>
+</table>
+</html>

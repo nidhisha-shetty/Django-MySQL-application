@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+Are you sure, you want to delete employee '{{context_obj.emp_name}}' details ?
+{% for x in messages %}
+		<h5> <p class="serif" style="color: red;"> {{x}} </p></h5>
+{% endfor %}
+<form method="POST">{% csrf_token %}
+	<input type="submit" value="Delete"/>
+	<a href="/records/"><button type="button" class="btn btn-danger">Home</button></a>                                                                                         
+</form>
+{% endblock %}
