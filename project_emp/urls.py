@@ -18,7 +18,7 @@ from django.urls import path
 from employees.views import records_view, search_view, sort_view, create_view, edit_view, delete_view, edit_emp_view, delete_emp_view
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('records/', records_view),
+    path('', records_view),
     path('search/', search_view),
     path('sort/', sort_view),
 
